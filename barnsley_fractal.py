@@ -25,7 +25,8 @@ default_preferences = {
     "top_color": "#788511",
     "completion_message": None,
     "background_color": "black",
-    "save_image": False
+    "save_image": False,
+    "point_size": 1
 }
 
 
@@ -148,14 +149,13 @@ try:
         fern.goto(x * preferences["scale"] + preferences["x_offset"], y * preferences["scale"] + preferences[
             "y_offset"])  # plotting the point after calculations with scale and offset
         fern.pendown()
-        fern.circle(1)
+        fern.circle(preferences["point_size"])
         next_function = random.choices(functions, preferences["probabilities"])[
             0]  # randomly choosing the next function according to the probabilities.
         x, y = next_function(x, y)
         fern.update()
     if preferences["completion_message"]:
         fern.penup()
-        fern.home()
         fern.goto(0, preferences["y_offset"] - 50)
         fern.pendown()
         fern.write(preferences["completion_message"], font=("Arial", 16, "normal"), align="center")
