@@ -2,7 +2,12 @@ import turtle as fern
 import random
 import sys
 import json
-from PIL import ImageGrab
+
+try: # This adds ability to visualize the fern without having to install pillow in case the user don't want the
+    # functionality to export the result.
+    from PIL import ImageGrab
+except ImportError:
+    ImageGrab = None
 
 default_preferences = {
     "ultrafast": True,
@@ -23,15 +28,19 @@ default_preferences = {
     "save_image": False
 }
 
-#Definition of the function to get the coordinates of the window
+
+# Definition of the function to get the coordinates of the window
 def window_coordinates():
     """ This function is solely to get the display size without adding any additional dependencies. What is does is it takes a screenshot of the screen and gets the size of the screenshot using python pillows utilities."""
-    display_width, display_height = ImageGrab.grab().size
-    left = (display_width-fern.window_width())//2
-    upper = (display_height-fern.window_height())//2
-    right = left + fern.window_width()
-    lower = upper + fern.window_height()
-    return (left, upper, right, lower)
+    if ImageGrab:
+        display_width, display_height = ImageGrab.grab().size
+        left = (display_width - fern.window_width()) // 2
+        upper = (display_height - fern.window_height()) // 2
+        right = left + fern.window_width()
+        lower = upper + fern.window_height()
+        return (left, upper, right, lower)
+
+
 # Definition of the Function to Check  command line arguments
 def check_cmd_args(sys_args, arg_count):
     global preferences
@@ -40,25 +49,25 @@ def check_cmd_args(sys_args, arg_count):
         print("plotting in slow mode.")
         if arg_count == 3:
             preferences["speed"] = int(sys_args[2])
-    
+
     elif arg_count == 2 and sys_args[1] == "-u":
         preferences["ultrafast"] = True
         print("Plotting in ultra fast mode.")
-    
+
     elif arg_count == 2 and sys_args[1] == "save":
         preferences["save_image"] = True
-        
+
     elif arg_count == 3 and sys_args[1] == "-p" and sys_args[2].isdigit():
         preferences["plot_points"] = int(sys_args[2])
         print("plotting", sys_args[2], "points.")
-        
+
     elif len(sys_args) == 2 and sys_args[1] == "-h":
         print("Refer the README.md file for more information.")
         sys.exit()
-        
+
     elif arg_count > 2 and sys_args[1] == "-c":
         for arg in sys_args[2:]:
-            if len(arg) == 9 and arg[2] == "#" and (int(arg[3:],16) < 16777216):
+            if len(arg) == 9 and arg[2] == "#" and (int(arg[3:], 16) < 16777216):
                 if arg[:2].lower() == "ll":
                     preferences["leftleaf_color"] = arg[2:]
                 elif arg[:2].lower() == "rl":
@@ -67,7 +76,7 @@ def check_cmd_args(sys_args, arg_count):
                     preferences["base_color"] = arg[2:]
                 elif arg[:2].lower() == "tp":
                     preferences["top_color"] = arg[2:]
-                    
+
     elif arg_count == 2 and sys_args[1] == "reset":
         preferences = default_preferences
         print("Preferences set to default.")
@@ -100,6 +109,8 @@ def function4(x, y):
     x4 = (-0.15) * x + 0.28 * y + 0
     y4 = 0.26 * x + 0.24 * y + 0.44
     return x4, y4
+
+
 # end of function definitions
 
 
@@ -118,7 +129,6 @@ except Exception as e:
 # Changing preferences according to the command line arguments.
 arg_count = len(sys.argv)
 check_cmd_args(sys.argv, arg_count)
-
 
 x = preferences["x"]
 y = preferences["y"]
@@ -148,13 +158,13 @@ try:
         fern.goto(0, -300)
         fern.pendown()
         fern.write(preferences["completion_message"], font=("Arial", 16, "normal"), align="center")
-    
-    if preferences["save_image"]:
-         # Capturing and saving the captured image as a PNG file
+
+    if ImageGrab and preferences["save_image"]:
+        # Capturing and saving the captured image as a PNG file
         image = ImageGrab.grab(bbox=window_coordinates())
         image.save("image_barnsley.png", "PNG")
     fern.exitonclick()
-    
+
 except fern.Terminator:
     print("Visualisation window closed by the user.")
 # end of plotting code
