@@ -155,7 +155,8 @@ try:
         fern.update()
     if preferences["completion_message"]:
         fern.penup()
-        fern.goto(0, -300)
+        fern.home()
+        fern.goto(0, preferences["y_offset"] - 50)
         fern.pendown()
         fern.write(preferences["completion_message"], font=("Arial", 16, "normal"), align="center")
 
