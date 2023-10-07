@@ -163,4 +163,4 @@ cython_debug/
 preferences*.json
 
 # ignore PNG files whioch are results of exports.
-images*.png
+image*.png
