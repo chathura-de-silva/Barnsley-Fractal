@@ -15,19 +15,18 @@
 
 *   This repository contains a implementation of well known fractal named as "Barnsley Fractal" also known as "Barnsley Fern" written in `Python`.
 
->[!IMPORTANT]
->## Features
->*   Ability to easily alter the,
->      * Total number of points to plot
->      * Plot speed (+ additional ultraspeed mode)
->      * colors of the segments of the fern
->      * canvas background color
->      * ...
->      * and many more...
->      
->*   Optional Notification when plotting completed.
->*   Automatically saving your preferences. Can Reset at anytime.
->*   Exporting result as a PNG image.
+## Features
+*   Ability to easily alter the,
+      * Total number of points to plot
+      * Plot speed (+ additional ultraspeed mode)
+      * colors of the segments of the fern
+      * canvas background color
+      * ...
+      * and many more...
+      
+*   Optional Notification when plotting completed.
+*   Automatically saving your preferences. Can Reset at anytime.
+*   Exporting result as a PNG image.
 
 
 
