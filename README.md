@@ -184,7 +184,7 @@ Each time you run the script with commandline arguments as specified below your 
   >* 2 <= `point_size` <= 5 if `use_dot_points` = `true`
   >* 0.02 <= `point_size` <= 5 if `use_dot_points` = `false`
   >*  Otherwise the point size will be reset to the infimum.
-  ## What is Barsnley Fractal?
+## What is Barsnley Fractal?
 
 
 The **Barnsley Fractal**, also known as the **Barnsley Fern**, is a fascinating and visually striking fractal pattern that was discovered by British mathematician and computer scientist Michael Barnsley in 1988. This fractal is renowned for its intricate, fern-like appearance and is a prominent example of an iterated function system (IFS) fractal.
