@@ -1,3 +1,4 @@
+# Barnsley Fractal
 <p align="center">
     <picture>
       <source 
@@ -252,3 +253,5 @@ You could use this for,
 * Open an issue,
   *  if you face any problems while setting up or using and you think that it's a fault in the implementation.
   * For any feature request.
+
+[go to the top](#barnsley-fractal)
