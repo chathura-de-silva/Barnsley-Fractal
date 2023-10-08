@@ -106,10 +106,10 @@ Each time you run the script with commandline arguments as specified below your 
   ```
 * Altering the plot colors
   * You can specify any permutation of the parameters given below as given in the examples. Color is specified as RGB hex values prefixed with "#". 
-    * `bs` -  color of the stem
-    * `tp` -  color of the successively smaller leaflet
-    * `lf` -  color of the larger left leaflet
-    * `rf` -  color of the larger right leaflet
+    * `bs` -  color of the stem (base)
+    * `tp` -  color of the successively smaller leaflet (top)
+    * `ll` -  color of the larger left leaflet (left leaflet)
+    * `rl` -  color of the larger right leaflet (right leaflet)
 
 
   ex - 
@@ -184,7 +184,7 @@ Each time you run the script with commandline arguments as specified below your 
   >* 2 <= `point_size` <= 5 if `use_dot_points` = `true`
   >* 0.02 <= `point_size` <= 5 if `use_dot_points` = `false`
   >*  Otherwise the point size will be reset to the infimum.
-## What is Barsnley Fractal?
+## What is Barnsley Fractal?
 
 
 The **Barnsley Fractal**, also known as the **Barnsley Fern**, is a fascinating and visually striking fractal pattern that was discovered by British mathematician and computer scientist Michael Barnsley in 1988. This fractal is renowned for its intricate, fern-like appearance and is a prominent example of an iterated function system (IFS) fractal.
@@ -250,6 +250,7 @@ You could use this for,
 <img width="1604" alt="Gallery Image" src="assets/7.png">  |  <img width="1604" alt="Gallery Image" src="assets/8.png">|<img width="1604" alt="Gallery Image" src="assets/9.png">
 ## Contributions
 * Any contribution is welcome. Even an implementation of a new fractal would be appreciated.
+* Use the discussions for any clarification.
 * Open an issue,
   *  if you face any problems while setting up or using and you think that it's a fault in the implementation.
   * For any feature request.
