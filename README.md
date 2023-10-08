@@ -53,7 +53,7 @@ This repository contains a high level implementation of a visualization of well 
 
 1.  Clone the repository
     ```bash
-    $ git clone https://github.com/chathura-de-silva/Natural-Fractals.git
+    $ git clone https://github.com/chathura-de-silva/Barnsley-Fractal.git
     ```
 2.  Install Python Pillow package.
     ```bash
