@@ -26,9 +26,9 @@ default_preferences = {
     "completion_message": None,
     "background_color": "black",
     "save_image": False,
-    "point_size": 1
+    "point_size": 1,
+    "use_dot_points": False
 }
-
 
 # Definition of the function to get the coordinates of the window
 def window_coordinates():
@@ -127,6 +127,13 @@ except Exception as e:
     sys.exit(1)
 # end of loading preferences
 
+#adjusting the pen size if not in limits.
+if preferences["use_dot_points"] and not(5>=preferences["point_size"] and preferences["point_size"]>= 2):
+    preferences["point_size"] = 2
+    print("Point size adjusted to 2 to avoid errors.")
+elif not preferences["use_dot_points"] and not(5>=preferences["point_size"]and preferences["point_size"]>= 0.02):
+    preferences["point_size"] = 1
+    print("Point size adjusted to 1 to avoid errors.")
 # Changing preferences according to the command line arguments.
 arg_count = len(sys.argv)
 check_cmd_args(sys.argv, arg_count)
@@ -137,11 +144,11 @@ functions = [function1, function2, function3, function4]
 
 # Plotting related code starts here.
 fern.bgcolor(preferences["background_color"])
-fern.speed(preferences["speed"])
+fern.speed(10 - preferences["speed"])
 fern.hideturtle()
 fern.title("Barnsley Fern")
 
-if preferences.get("ultrafast", True):
+if preferences["ultrafast"]:
     fern.tracer(0)
 try:
     for step in range(preferences["plot_points"]):
@@ -149,7 +156,10 @@ try:
         fern.goto(x * preferences["scale"] + preferences["x_offset"], y * preferences["scale"] + preferences[
             "y_offset"])  # plotting the point after calculations with scale and offset
         fern.pendown()
-        fern.circle(preferences["point_size"])
+        if preferences["use_dot_points"]:
+            fern.dot(preferences["point_size"], fern.pencolor())
+        else:
+            fern.circle(preferences["point_size"])
         next_function = random.choices(functions, preferences["probabilities"])[
             0]  # randomly choosing the next function according to the probabilities.
         x, y = next_function(x, y)
