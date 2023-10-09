@@ -42,7 +42,7 @@ This repository contains a high level implementation of a visualization of well 
 2.  [Feature configuration](#feature-configuration)
     * [Using the Commandline for basic preferences](#using-the-commandline)
     * [Through `preferences_barnsley.json`](#creatingediting-the-preferences_barnsleyjson)
-3.  [What is Barsnley Fractal?](#what-is-barsnley-fractal)
+3.  [What is Barsnley Fractal?](#what-is-barnsley-fractal)
     * [Mathematical Foundations](#mathematical-foundations)
     * [Visual Charasteristics](#visual-characteristics)
     * [Applications](#applications)
