@@ -1,4 +1,7 @@
 using JSON
+using Luxor
+
+# print(ARGS)
 default_preferences = Dict(
     "ultrafast" => true,
     "x_offset" => 0,
@@ -19,35 +22,36 @@ default_preferences = Dict(
     "point_size" => 1,
     "use_dot_points" => false
 )
+  
 
 # #Definition of the function to check the command line arguments.
 function check_cmd_args(sys_args, arg_count)
     global preferences
-    if arg_count > 0 & sys_args[1] == "-s"
+    if arg_count > 0 && sys_args[1] == "-s"
         preferences["ultrafast"] = false
         print("plotting in slow mode.")
         if arg_count == 2
             preferences["speed"] = parse(Int, sys_args[2])
         end
 
-    elseif arg_count == 1 & sys_args[1] == "-u"
+    elseif arg_count == 1 && sys_args[1] == "-u"
         preferences["ultrafast"] = true
         print("plotting in ultrafast mode.")
 
-    elseif arg_count == 1 & sys_args[1] == "save"
+    elseif arg_count == 1 && sys_args[1] == "save"
         preferences["save_image"] = true
 
-    elseif arg_count == 2 & sys_args[1] == "-p" & args[2].isdigit()
+    elseif arg_count == 2 && sys_args[1] == "-p" & args[2].isdigit()
         preferences["plot_points"] = parse(Int, sys_args[2])
         print("plotting ", sys_args[2], " points.")
 
-    elseif arg_count == 1 & sys_args[1] == "-h"
+    elseif arg_count == 1 &&sys_args[1] == "-h"
         print("Refer the README.md file for more information.")
         exit()
 
-    elseif arg_count > 1 & sys_args[1] == "-c"
+    elseif arg_count > 1 && sys_args[1] == "-c"
         for arg in sys_args[2:end]
-            if length(arg) == 9 & arg[3] == "#" & (parse(Int, arg[4:end], base=16) < 16777216)
+            if length(arg) == 9 && arg[3] == "#" && (parse(Int, arg[4:end], base=16) < 16777216)
                 if arg[1:2] == "ll"
                     preferences["leftleaf_color"] = arg[4:end]
                 elseif arg[1:2] == "rl"
@@ -59,11 +63,12 @@ function check_cmd_args(sys_args, arg_count)
                 end
             end
         end
-    elseif arg_count == 1 & sys_args[1] == "reset"
+    elseif arg_count == 1 && sys_args[1] == "reset"
         preferences = default_preferences
         print("Preferences reset to default.")
     end
 end
+
 # Definitions of the functions for the fractal transformations.
 function function1(x, y)
     return [0.0 0.0; 0.0 0.16] * [x; y]
@@ -87,11 +92,25 @@ try
     global preferences = JSON.parsefile("preferences_barnsley.json")
     print("prefs: "*preferences)
 catch e
-    if isa(e, SystemError) occursin("no such file", string(e))  # Julia's equivalent to FileNotFoundError
+    if isa(e, SystemError) & occursin("2, nothing", string(e))  # Julia's equivalent to FileNotFoundError
         println("The file 'preferences_barnsley.json' does not exist. Using default preferences.")
         global preferences = default_preferences
     else
         println("Error: ", e) 
         println("Stacktrace: ", catch_backtrace())
+        exit()
     end
 end
+# End of loading preferences.
+
+# Adjusting any parameters that were passed as command line arguments if needed.
+# To be implemented
+
+#Changing preferences according to the command line arguments.  
+arg_count = length(ARGS)
+check_cmd_args(ARGS, arg_count)
+
+x = preferences["x"]
+y = preferences["y"]
+functions = [function1, function2, function3, function4]
+
