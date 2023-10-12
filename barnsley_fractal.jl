@@ -1,5 +1,6 @@
 using JSON
 using Luxor
+using StatsBase
 
 # print(ARGS)
 default_preferences = Dict(
@@ -114,3 +115,11 @@ x = preferences["x"]
 y = preferences["y"]
 functions = [function1, function2, function3, function4]
 
+# Create a ProbabilityWeights object from the list of weights
+weights = ProbabilityWeights(preferences["probabilities"])
+
+# Sample a function from the list of functions, weighted by the probabilities in the ProbabilityWeights object
+selected_function = sample(functions, weights)
+
+# Execute the selected function
+selected_function(x,y)
