@@ -36,8 +36,9 @@ This repository contains a high level implementation of a visualization of well 
 *   Single python file so **portable**.
 *   Runnable **without any thirdparty dependancy**. <sup>_(Additional Dependency required only to export the results.)_<sup/>
 * Complete documentation
+
 ## Quick Links
-  
+
 1.  [Getting Started](#getting-started)
 2.  [Feature configuration](#feature-configuration)
     * [Using the Commandline for basic preferences](#using-the-commandline)
@@ -49,6 +50,7 @@ This repository contains a high level implementation of a visualization of well 
 4.  [For what?](#for-what)
 5.  [Gallery](#gallery) 
 6.  [Contributions](#contributions)
+  
 ## Getting Started
 
 1.  Clone the repository
@@ -131,23 +133,23 @@ Each time you run the script with commandline arguments as specified below your 
 * JSON file with alterable parameters and their default values
   ```json
   {"ultrafast": true, 
-  "x_offset": 0, 
-  "y_offset": -230, 
-  "scale": 50, 
-  "plot_points": 10000, 
-  "probabilities": [0.01, 0.85, 0.07, 0.07], 
-  "x": 0, 
-  "y": 0, 
-  "speed": 0, 
-  "leftleaf_color": "#6E4C21", 
-  "rightleaf_color": "#37B469", 
-  "base_color": "#988a4f", 
-  "top_color": "#788511", 
-  "completion_message": null, 
-  "background_color": "black", 
-  "save_image": false, 
-  "point_size": 1,
-  "use_dot_points": false}
+    "x_offset": 0, 
+    "y_offset": -230, 
+    "scale": 50, 
+    "plot_points": 10000, 
+    "probabilities": [0.01, 0.85, 0.07, 0.07], 
+    "x": 0, 
+    "y": 0, 
+    "speed": 0, 
+    "leftleaf_color": "#6E4C21", 
+    "rightleaf_color": "#37B469", 
+    "base_color": "#988a4f", 
+    "top_color": "#788511", 
+    "completion_message": null, 
+    "background_color": "black", 
+    "save_image": false, 
+    "point_size": 1,
+    "use_dot_points": false}
   ```
 - `ultrafast` (Boolean): Set to `true` for ultra-fast plotting mode, which speeds up the generation process.
 
@@ -248,6 +250,7 @@ You could use this for,
 :-------------------------:|:-------------------------:|:-------------------------:
 <img width="1604" alt="Gallery Image" src="assets/4.png">  |  <img width="1604" alt="Gallery Image" src="assets/5.png">|<img width="1604" alt="Gallery Image" src="assets/6.png">
 <img width="1604" alt="Gallery Image" src="assets/7.png">  |  <img width="1604" alt="Gallery Image" src="assets/8.png">|<img width="1604" alt="Gallery Image" src="assets/9.png">
+
 ## Contributions
 * Any contribution is welcome. Even an implementation of a new fractal would be appreciated.
 * Use the discussions for any clarification.
