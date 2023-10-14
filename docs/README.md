@@ -36,22 +36,21 @@ This repository contains a high level implementation of a visualization of well 
 *   Single python file so **portable**.
 *   Runnable **without any thirdparty dependancy**. <sup>_(Additional Dependency required only to export the results.)_<sup/>
 * Complete documentation
+
 ## Quick Links
+
+1.  [Getting Started](#getting-started)
+2.  [Feature configuration](#feature-configuration)
+    * [Using the Commandline for basic preferences](#using-the-commandline)
+    * [Through `preferences_barnsley.json`](#creatingediting-the-preferences_barnsleyjson)
+3.  [What is Barsnley Fractal?](#what-is-barnsley-fractal)
+    * [Mathematical Foundations](#mathematical-foundations)
+    * [Visual Charasteristics](#visual-characteristics)
+    * [Applications](#applications)
+4.  [For what?](#for-what)
+5.  [Gallery](#gallery) 
+6.  [Contributions](#contributions)
   
-- [Barnsley Fractal](#barnsley-fractal)
-  - [Features](#features)
-  - [Quick Links](#quick-links)
-  - [Getting Started](#getting-started)
-  - [Feature Configuration](#feature-configuration)
-    - [Using the Commandline](#using-the-commandline)
-    - [Creating/Editing the `preferences_barnsley.json`.](#creatingediting-the-preferences_barnsleyjson)
-  - [What is Barnsley Fractal?](#what-is-barnsley-fractal)
-    - [Mathematical Foundations](#mathematical-foundations)
-    - [Visual Characteristics](#visual-characteristics)
-    - [Applications](#applications)
-  - [For What?](#for-what)
-  - [Gallery](#gallery)
-  - [Contributions](#contributions)
 ## Getting Started
 
 1.  Clone the repository
