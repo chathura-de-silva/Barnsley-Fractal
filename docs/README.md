@@ -132,8 +132,7 @@ Each time you run the script with commandline arguments as specified below your 
 
 * JSON file with alterable parameters and their default values
   ```json
-  {
-    "ultrafast": true, 
+  {"ultrafast": true, 
     "x_offset": 0, 
     "y_offset": -230, 
     "scale": 50, 
@@ -150,8 +149,7 @@ Each time you run the script with commandline arguments as specified below your 
     "background_color": "black", 
     "save_image": false, 
     "point_size": 1,
-    "use_dot_points": false
-  }
+    "use_dot_points": false}
   ```
 - `ultrafast` (Boolean): Set to `true` for ultra-fast plotting mode, which speeds up the generation process.
 
