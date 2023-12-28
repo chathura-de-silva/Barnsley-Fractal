@@ -1,6 +1,8 @@
 using JSON
-using Luxor
+using Makie
 using StatsBase
+using GLMakie
+
 
 # print(ARGS)
 default_preferences = Dict(
@@ -111,15 +113,29 @@ end
 arg_count = length(ARGS)
 check_cmd_args(ARGS, arg_count)
 
-x = preferences["x"]
-y = preferences["y"]
+# Unlike inn python implementation. This implementation stores all the points.
+x_points = []
+y_points = []
+
+push!(x_points,preferences["x"])
+push!(y_points,preferences["y"])
 functions = [function1, function2, function3, function4]
 
 # Create a ProbabilityWeights object from the list of weights
 weights = ProbabilityWeights(preferences["probabilities"])
 
-# Sample a function from the list of functions, weighted by the probabilities in the ProbabilityWeights object
-selected_function = sample(functions, weights)
 
-# Execute the selected function
-selected_function(x,y)
+
+for i in 1:preferences["plot_points"]
+    # Sample a function from the list of functions, weighted by the probabilities in the ProbabilityWeights object
+    selected_function = sample(functions, weights)
+
+    # Execute the selected function
+    println(x_points[end],y_points[end])
+    x,y = selected_function(x_points[end],y_points[end])
+    push!(x_points,x)
+    push!(y_points,y)
+end
+
+scatter(Float32.(x_points),Float32.(y_points))
+
