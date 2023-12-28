@@ -137,5 +137,17 @@ for i in 1:preferences["plot_points"]
     push!(y_points,y)
 end
 
-scatter(Float32.(x_points),Float32.(y_points))
+plot = scatter(Float32.(x_points),Float32.(y_points))
+display(plot)
 
+
+if arg_count > 0
+    try
+        JSON.open("preferences_barnsley.json", "w") do file
+            JSON.print(file, preferences)
+        end
+        println("Preferences saved to preferences_barnsley.json.")
+    catch e
+        println("Error saving preferences: ", e)
+    end
+end
